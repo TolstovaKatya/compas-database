@@ -37,7 +37,7 @@ COMMENT ON SCHEMA public IS 'standard public schema';
 -- Name: complexity_type; Type: TYPE; Schema: public; Owner: -
 --
 
-CREATE TYPE public.complexity_type AS ENUM (
+CREATE TYPE complexity_type AS ENUM (
     'main',
     'hard'
 );
@@ -47,7 +47,7 @@ CREATE TYPE public.complexity_type AS ENUM (
 -- Name: role_type; Type: TYPE; Schema: public; Owner: -
 --
 
-CREATE TYPE public.role_type AS ENUM (
+CREATE TYPE role_type AS ENUM (
     'teacher',
     'student'
 );
@@ -61,7 +61,7 @@ SET default_table_access_method = heap;
 -- Name: answer_type; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.answer_type (
+CREATE TABLE answer_type (
     id integer NOT NULL,
     type character varying
 );
@@ -71,7 +71,7 @@ CREATE TABLE public.answer_type (
 -- Name: answer_type_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.answer_type_id_seq
+CREATE SEQUENCE answer_type_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -84,14 +84,14 @@ CREATE SEQUENCE public.answer_type_id_seq
 -- Name: answer_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.answer_type_id_seq OWNED BY public.answer_type.id;
+ALTER SEQUENCE answer_type_id_seq OWNED BY answer_type.id;
 
 
 --
 -- Name: complexity; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.complexity (
+CREATE TABLE complexity (
     id integer NOT NULL,
     complexity character varying
 );
@@ -101,7 +101,7 @@ CREATE TABLE public.complexity (
 -- Name: complexity_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.complexity_id_seq
+CREATE SEQUENCE complexity_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -114,14 +114,14 @@ CREATE SEQUENCE public.complexity_id_seq
 -- Name: complexity_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.complexity_id_seq OWNED BY public.complexity.id;
+ALTER SEQUENCE complexity_id_seq OWNED BY complexity.id;
 
 
 --
 -- Name: lessons; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.lessons (
+CREATE TABLE lessons (
     task_indexs integer,
     title text,
     description text,
@@ -135,7 +135,7 @@ CREATE TABLE public.lessons (
 -- Name: lessons_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.lessons_id_seq
+CREATE SEQUENCE lessons_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -148,14 +148,14 @@ CREATE SEQUENCE public.lessons_id_seq
 -- Name: lessons_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.lessons_id_seq OWNED BY public.lessons.id;
+ALTER SEQUENCE lessons_id_seq OWNED BY lessons.id;
 
 
 --
 -- Name: question_answers; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.question_answers (
+CREATE TABLE question_answers (
     id_quiz_questions bigint,
     answer_text text,
     id integer NOT NULL,
@@ -167,7 +167,7 @@ CREATE TABLE public.question_answers (
 -- Name: question_answers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.question_answers_id_seq
+CREATE SEQUENCE question_answers_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -180,14 +180,14 @@ CREATE SEQUENCE public.question_answers_id_seq
 -- Name: question_answers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.question_answers_id_seq OWNED BY public.question_answers.id;
+ALTER SEQUENCE question_answers_id_seq OWNED BY question_answers.id;
 
 
 --
 -- Name: quizz_questions; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.quizz_questions (
+CREATE TABLE quizz_questions (
     id_quiz bigint,
     question_text text,
     id integer NOT NULL
@@ -198,7 +198,7 @@ CREATE TABLE public.quizz_questions (
 -- Name: quizz_questions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.quizz_questions_id_seq
+CREATE SEQUENCE quizz_questions_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -211,14 +211,14 @@ CREATE SEQUENCE public.quizz_questions_id_seq
 -- Name: quizz_questions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.quizz_questions_id_seq OWNED BY public.quizz_questions.id;
+ALTER SEQUENCE quizz_questions_id_seq OWNED BY quizz_questions.id;
 
 
 --
 -- Name: quizzes; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.quizzes (
+CREATE TABLE quizzes (
     id_lesson bigint,
     title text,
     id integer NOT NULL
@@ -229,7 +229,7 @@ CREATE TABLE public.quizzes (
 -- Name: quizzes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.quizzes_id_seq
+CREATE SEQUENCE quizzes_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -242,14 +242,14 @@ CREATE SEQUENCE public.quizzes_id_seq
 -- Name: quizzes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.quizzes_id_seq OWNED BY public.quizzes.id;
+ALTER SEQUENCE quizzes_id_seq OWNED BY quizzes.id;
 
 
 --
 -- Name: roles; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.roles (
+CREATE TABLE roles (
     id integer NOT NULL,
     role_name character varying
 );
@@ -259,7 +259,7 @@ CREATE TABLE public.roles (
 -- Name: roles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.roles_id_seq
+CREATE SEQUENCE roles_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -272,14 +272,14 @@ CREATE SEQUENCE public.roles_id_seq
 -- Name: roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.roles_id_seq OWNED BY public.roles.id;
+ALTER SEQUENCE roles_id_seq OWNED BY roles.id;
 
 
 --
 -- Name: status; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.status (
+CREATE TABLE status (
     id integer NOT NULL,
     status character varying
 );
@@ -289,7 +289,7 @@ CREATE TABLE public.status (
 -- Name: status_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.status_id_seq
+CREATE SEQUENCE status_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -302,14 +302,14 @@ CREATE SEQUENCE public.status_id_seq
 -- Name: status_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.status_id_seq OWNED BY public.status.id;
+ALTER SEQUENCE status_id_seq OWNED BY status.id;
 
 
 --
 -- Name: user_lesson_progress; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.user_lesson_progress (
+CREATE TABLE user_lesson_progress (
     id_user bigint,
     id_lesson bigint,
     id integer NOT NULL,
@@ -321,7 +321,7 @@ CREATE TABLE public.user_lesson_progress (
 -- Name: user_lesson_progress_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.user_lesson_progress_id_seq
+CREATE SEQUENCE user_lesson_progress_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -334,14 +334,14 @@ CREATE SEQUENCE public.user_lesson_progress_id_seq
 -- Name: user_lesson_progress_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.user_lesson_progress_id_seq OWNED BY public.user_lesson_progress.id;
+ALTER SEQUENCE user_lesson_progress_id_seq OWNED BY user_lesson_progress.id;
 
 
 --
 -- Name: user_quiz_progress; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.user_quiz_progress (
+CREATE TABLE user_quiz_progress (
     max_score integer NOT NULL,
     score integer NOT NULL,
     id_user bigint,
@@ -354,7 +354,7 @@ CREATE TABLE public.user_quiz_progress (
 -- Name: user_quiz_progress_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.user_quiz_progress_id_seq
+CREATE SEQUENCE user_quiz_progress_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -367,14 +367,14 @@ CREATE SEQUENCE public.user_quiz_progress_id_seq
 -- Name: user_quiz_progress_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.user_quiz_progress_id_seq OWNED BY public.user_quiz_progress.id;
+ALTER SEQUENCE user_quiz_progress_id_seq OWNED BY user_quiz_progress.id;
 
 
 --
 -- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.users (
+CREATE TABLE users (
     email character varying(320) NOT NULL,
     first_name character varying(35) NOT NULL,
     second_name character varying(35) NOT NULL,
@@ -388,7 +388,7 @@ CREATE TABLE public.users (
 -- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.users_id_seq
+CREATE SEQUENCE users_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -401,91 +401,91 @@ CREATE SEQUENCE public.users_id_seq
 -- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
 -- Name: answer_type id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.answer_type ALTER COLUMN id SET DEFAULT nextval('public.answer_type_id_seq'::regclass);
+ALTER TABLE ONLY answer_type ALTER COLUMN id SET DEFAULT nextval('answer_type_id_seq'::regclass);
 
 
 --
 -- Name: complexity id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.complexity ALTER COLUMN id SET DEFAULT nextval('public.complexity_id_seq'::regclass);
+ALTER TABLE ONLY complexity ALTER COLUMN id SET DEFAULT nextval('complexity_id_seq'::regclass);
 
 
 --
 -- Name: lessons id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.lessons ALTER COLUMN id SET DEFAULT nextval('public.lessons_id_seq'::regclass);
+ALTER TABLE ONLY lessons ALTER COLUMN id SET DEFAULT nextval('lessons_id_seq'::regclass);
 
 
 --
 -- Name: question_answers id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.question_answers ALTER COLUMN id SET DEFAULT nextval('public.question_answers_id_seq'::regclass);
+ALTER TABLE ONLY question_answers ALTER COLUMN id SET DEFAULT nextval('question_answers_id_seq'::regclass);
 
 
 --
 -- Name: quizz_questions id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.quizz_questions ALTER COLUMN id SET DEFAULT nextval('public.quizz_questions_id_seq'::regclass);
+ALTER TABLE ONLY quizz_questions ALTER COLUMN id SET DEFAULT nextval('quizz_questions_id_seq'::regclass);
 
 
 --
 -- Name: quizzes id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.quizzes ALTER COLUMN id SET DEFAULT nextval('public.quizzes_id_seq'::regclass);
+ALTER TABLE ONLY quizzes ALTER COLUMN id SET DEFAULT nextval('quizzes_id_seq'::regclass);
 
 
 --
 -- Name: roles id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.roles ALTER COLUMN id SET DEFAULT nextval('public.roles_id_seq'::regclass);
+ALTER TABLE ONLY roles ALTER COLUMN id SET DEFAULT nextval('roles_id_seq'::regclass);
 
 
 --
 -- Name: status id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.status ALTER COLUMN id SET DEFAULT nextval('public.status_id_seq'::regclass);
+ALTER TABLE ONLY status ALTER COLUMN id SET DEFAULT nextval('status_id_seq'::regclass);
 
 
 --
 -- Name: user_lesson_progress id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.user_lesson_progress ALTER COLUMN id SET DEFAULT nextval('public.user_lesson_progress_id_seq'::regclass);
+ALTER TABLE ONLY user_lesson_progress ALTER COLUMN id SET DEFAULT nextval('user_lesson_progress_id_seq'::regclass);
 
 
 --
 -- Name: user_quiz_progress id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.user_quiz_progress ALTER COLUMN id SET DEFAULT nextval('public.user_quiz_progress_id_seq'::regclass);
+ALTER TABLE ONLY user_quiz_progress ALTER COLUMN id SET DEFAULT nextval('user_quiz_progress_id_seq'::regclass);
 
 
 --
 -- Name: users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
 --
 -- Data for Name: answer_type; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.answer_type (id, type) FROM stdin;
+COPY answer_type (id, type) FROM stdin;
 \.
 
 
@@ -493,7 +493,7 @@ COPY public.answer_type (id, type) FROM stdin;
 -- Data for Name: complexity; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.complexity (id, complexity) FROM stdin;
+COPY complexity (id, complexity) FROM stdin;
 \.
 
 
@@ -501,7 +501,7 @@ COPY public.complexity (id, complexity) FROM stdin;
 -- Data for Name: lessons; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.lessons (task_indexs, title, description, video_url, id, task_complexity) FROM stdin;
+COPY lessons (task_indexs, title, description, video_url, id, task_complexity) FROM stdin;
 \.
 
 
@@ -509,7 +509,7 @@ COPY public.lessons (task_indexs, title, description, video_url, id, task_comple
 -- Data for Name: question_answers; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.question_answers (id_quiz_questions, answer_text, id, is_correct) FROM stdin;
+COPY question_answers (id_quiz_questions, answer_text, id, is_correct) FROM stdin;
 \.
 
 
@@ -517,7 +517,7 @@ COPY public.question_answers (id_quiz_questions, answer_text, id, is_correct) FR
 -- Data for Name: quizz_questions; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.quizz_questions (id_quiz, question_text, id) FROM stdin;
+COPY quizz_questions (id_quiz, question_text, id) FROM stdin;
 \.
 
 
@@ -525,7 +525,7 @@ COPY public.quizz_questions (id_quiz, question_text, id) FROM stdin;
 -- Data for Name: quizzes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.quizzes (id_lesson, title, id) FROM stdin;
+COPY quizzes (id_lesson, title, id) FROM stdin;
 \.
 
 
@@ -533,7 +533,7 @@ COPY public.quizzes (id_lesson, title, id) FROM stdin;
 -- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.roles (id, role_name) FROM stdin;
+COPY roles (id, role_name) FROM stdin;
 \.
 
 
@@ -541,7 +541,7 @@ COPY public.roles (id, role_name) FROM stdin;
 -- Data for Name: status; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.status (id, status) FROM stdin;
+COPY status (id, status) FROM stdin;
 \.
 
 
@@ -549,7 +549,7 @@ COPY public.status (id, status) FROM stdin;
 -- Data for Name: user_lesson_progress; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.user_lesson_progress (id_user, id_lesson, id, status) FROM stdin;
+COPY user_lesson_progress (id_user, id_lesson, id, status) FROM stdin;
 \.
 
 
@@ -557,7 +557,7 @@ COPY public.user_lesson_progress (id_user, id_lesson, id, status) FROM stdin;
 -- Data for Name: user_quiz_progress; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.user_quiz_progress (max_score, score, id_user, id_quiz, id) FROM stdin;
+COPY user_quiz_progress (max_score, score, id_user, id_quiz, id) FROM stdin;
 \.
 
 
@@ -565,7 +565,7 @@ COPY public.user_quiz_progress (max_score, score, id_user, id_quiz, id) FROM std
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.users (email, first_name, second_name, id, created_at, role) FROM stdin;
+COPY users (email, first_name, second_name, id, created_at, role) FROM stdin;
 \.
 
 
@@ -573,84 +573,84 @@ COPY public.users (email, first_name, second_name, id, created_at, role) FROM st
 -- Name: answer_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.answer_type_id_seq', 1, false);
+SELECT pg_catalog.setval('answer_type_id_seq', 1, false);
 
 
 --
 -- Name: complexity_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.complexity_id_seq', 1, false);
+SELECT pg_catalog.setval('complexity_id_seq', 1, false);
 
 
 --
 -- Name: lessons_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.lessons_id_seq', 1, false);
+SELECT pg_catalog.setval('lessons_id_seq', 1, false);
 
 
 --
 -- Name: question_answers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.question_answers_id_seq', 1, false);
+SELECT pg_catalog.setval('question_answers_id_seq', 1, false);
 
 
 --
 -- Name: quizz_questions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.quizz_questions_id_seq', 1, false);
+SELECT pg_catalog.setval('quizz_questions_id_seq', 1, false);
 
 
 --
 -- Name: quizzes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.quizzes_id_seq', 1, false);
+SELECT pg_catalog.setval('quizzes_id_seq', 1, false);
 
 
 --
 -- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.roles_id_seq', 1, false);
+SELECT pg_catalog.setval('roles_id_seq', 1, false);
 
 
 --
 -- Name: status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.status_id_seq', 1, false);
+SELECT pg_catalog.setval('status_id_seq', 1, false);
 
 
 --
 -- Name: user_lesson_progress_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.user_lesson_progress_id_seq', 1, false);
+SELECT pg_catalog.setval('user_lesson_progress_id_seq', 1, false);
 
 
 --
 -- Name: user_quiz_progress_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.user_quiz_progress_id_seq', 1, false);
+SELECT pg_catalog.setval('user_quiz_progress_id_seq', 1, false);
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 1, false);
+SELECT pg_catalog.setval('users_id_seq', 1, false);
 
 
 --
 -- Name: answer_type answer_type_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.answer_type
+ALTER TABLE ONLY answer_type
     ADD CONSTRAINT answer_type_pkey PRIMARY KEY (id);
 
 
@@ -658,7 +658,7 @@ ALTER TABLE ONLY public.answer_type
 -- Name: complexity complexity_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.complexity
+ALTER TABLE ONLY complexity
     ADD CONSTRAINT complexity_pkey PRIMARY KEY (id);
 
 
@@ -666,7 +666,7 @@ ALTER TABLE ONLY public.complexity
 -- Name: lessons lessons_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.lessons
+ALTER TABLE ONLY lessons
     ADD CONSTRAINT lessons_pkey PRIMARY KEY (id);
 
 
@@ -674,7 +674,7 @@ ALTER TABLE ONLY public.lessons
 -- Name: question_answers question_answers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.question_answers
+ALTER TABLE ONLY question_answers
     ADD CONSTRAINT question_answers_pkey PRIMARY KEY (id);
 
 
@@ -682,7 +682,7 @@ ALTER TABLE ONLY public.question_answers
 -- Name: quizz_questions quizz_questions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.quizz_questions
+ALTER TABLE ONLY quizz_questions
     ADD CONSTRAINT quizz_questions_pkey PRIMARY KEY (id);
 
 
@@ -690,7 +690,7 @@ ALTER TABLE ONLY public.quizz_questions
 -- Name: quizzes quizzes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.quizzes
+ALTER TABLE ONLY quizzes
     ADD CONSTRAINT quizzes_pkey PRIMARY KEY (id);
 
 
@@ -698,7 +698,7 @@ ALTER TABLE ONLY public.quizzes
 -- Name: roles roles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.roles
+ALTER TABLE ONLY roles
     ADD CONSTRAINT roles_pkey PRIMARY KEY (id);
 
 
@@ -706,7 +706,7 @@ ALTER TABLE ONLY public.roles
 -- Name: status status_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.status
+ALTER TABLE ONLY status
     ADD CONSTRAINT status_pkey PRIMARY KEY (id);
 
 
@@ -714,7 +714,7 @@ ALTER TABLE ONLY public.status
 -- Name: user_lesson_progress user_lesson_progress_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.user_lesson_progress
+ALTER TABLE ONLY user_lesson_progress
     ADD CONSTRAINT user_lesson_progress_pkey PRIMARY KEY (id);
 
 
@@ -722,7 +722,7 @@ ALTER TABLE ONLY public.user_lesson_progress
 -- Name: user_quiz_progress user_quiz_progress_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.user_quiz_progress
+ALTER TABLE ONLY user_quiz_progress
     ADD CONSTRAINT user_quiz_progress_pkey PRIMARY KEY (id);
 
 
@@ -730,7 +730,7 @@ ALTER TABLE ONLY public.user_quiz_progress
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.users
+ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 
 
@@ -738,88 +738,88 @@ ALTER TABLE ONLY public.users
 -- Name: question_answers answer_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.question_answers
-    ADD CONSTRAINT answer_type_id_fkey FOREIGN KEY (is_correct) REFERENCES public.answer_type(id);
+ALTER TABLE ONLY question_answers
+    ADD CONSTRAINT answer_type_id_fkey FOREIGN KEY (is_correct) REFERENCES answer_type(id);
 
 
 --
 -- Name: lessons complexity_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.lessons
-    ADD CONSTRAINT complexity_type_id_fkey FOREIGN KEY (task_complexity) REFERENCES public.complexity(id);
+ALTER TABLE ONLY lessons
+    ADD CONSTRAINT complexity_type_id_fkey FOREIGN KEY (task_complexity) REFERENCES complexity(id);
 
 
 --
 -- Name: quizz_questions id_quiz_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.quizz_questions
-    ADD CONSTRAINT id_quiz_fkey FOREIGN KEY (id_quiz) REFERENCES public.quizzes(id);
+ALTER TABLE ONLY quizz_questions
+    ADD CONSTRAINT id_quiz_fkey FOREIGN KEY (id_quiz) REFERENCES quizzes(id);
 
 
 --
 -- Name: user_quiz_progress id_quiz_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.user_quiz_progress
-    ADD CONSTRAINT id_quiz_fkey FOREIGN KEY (id_quiz) REFERENCES public.quizzes(id);
+ALTER TABLE ONLY user_quiz_progress
+    ADD CONSTRAINT id_quiz_fkey FOREIGN KEY (id_quiz) REFERENCES quizzes(id);
 
 
 --
 -- Name: question_answers id_quiz_questions_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.question_answers
-    ADD CONSTRAINT id_quiz_questions_fkey FOREIGN KEY (id_quiz_questions) REFERENCES public.quizz_questions(id);
+ALTER TABLE ONLY question_answers
+    ADD CONSTRAINT id_quiz_questions_fkey FOREIGN KEY (id_quiz_questions) REFERENCES quizz_questions(id);
 
 
 --
 -- Name: users id_role_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.users
-    ADD CONSTRAINT id_role_fkey FOREIGN KEY (role) REFERENCES public.roles(id);
+ALTER TABLE ONLY users
+    ADD CONSTRAINT id_role_fkey FOREIGN KEY (role) REFERENCES roles(id);
 
 
 --
 -- Name: user_lesson_progress id_user_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.user_lesson_progress
-    ADD CONSTRAINT id_user_fkey FOREIGN KEY (id_user) REFERENCES public.users(id);
+ALTER TABLE ONLY user_lesson_progress
+    ADD CONSTRAINT id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
 
 
 --
 -- Name: user_quiz_progress id_user_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.user_quiz_progress
-    ADD CONSTRAINT id_user_fkey FOREIGN KEY (id_user) REFERENCES public.users(id);
+ALTER TABLE ONLY user_quiz_progress
+    ADD CONSTRAINT id_user_fkey FOREIGN KEY (id_user) REFERENCES users(id);
 
 
 --
 -- Name: quizzes quizzes_id_lesson_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.quizzes
-    ADD CONSTRAINT quizzes_id_lesson_fkey FOREIGN KEY (id_lesson) REFERENCES public.lessons(id);
+ALTER TABLE ONLY quizzes
+    ADD CONSTRAINT quizzes_id_lesson_fkey FOREIGN KEY (id_lesson) REFERENCES lessons(id);
 
 
 --
 -- Name: user_lesson_progress statys_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.user_lesson_progress
-    ADD CONSTRAINT statys_type_id_fkey FOREIGN KEY (status) REFERENCES public.status(id);
+ALTER TABLE ONLY user_lesson_progress
+    ADD CONSTRAINT statys_type_id_fkey FOREIGN KEY (status) REFERENCES status(id);
 
 
 --
 -- Name: user_lesson_progress user_lesson_progress_id_lesson_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.user_lesson_progress
-    ADD CONSTRAINT user_lesson_progress_id_lesson_fkey FOREIGN KEY (id_lesson) REFERENCES public.lessons(id);
+ALTER TABLE ONLY user_lesson_progress
+    ADD CONSTRAINT user_lesson_progress_id_lesson_fkey FOREIGN KEY (id_lesson) REFERENCES lessons(id);
 
 
 --
